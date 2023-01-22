@@ -12,9 +12,11 @@ class DiveOperations{
         this.status = status;
         this.certificationLevel = certificationLevel;
         this.dateJoined = dateJoined;
+        this.certifyingAgency = this.certifyingAgency;
     }
     describe(){
-        return `${this.name} ${this.phoneNumber} ${this.status}`;
+        return `${this.name} is a ${this.status} member of WTDRR, joined on ${this.dateJoined}
+        is currently certified as ${this.certificationLevel} with ${this.certifyingAgency} and can be reached at ${this.phoneNumber}`;
     }
 }
 class Surface_Support{
@@ -26,9 +28,12 @@ class Surface_Support{
         this.dateJoined = dateJoined;
     }
     describe(){
-        return `${this.name} ${this.phoneNumber} ${this.status}`;
+        return `${this.name} is a ${this.status} member of WTDRR since ${this.dateJoined} and has been
+        trained in the following areas ${trainingArray}`;
     }
+    
 }
+let trainingArray = [];
 class Training{
     constructor(aboveWater, belowWater){
         this.sonar = [];
@@ -42,10 +47,13 @@ class Training{
         this.evidencePreservation = [];
         this.cpr = [];
         this.emergencyProcedures = [];
-        this.diverKitting [];
+        this.diverKitting = [];
 
     }
 }
+trainingArray.push(trainingInput);
+if()
+
 class Menu{
     constructor(){
         this.members = [];
@@ -87,4 +95,15 @@ showMainMenuOptions(){
     `);
 }
 
+}
+class Menu{//training menu. multiple selection menu 'click all that apply' or 1,2,3,4 with the last 
+    // option to submit and exit
+    constructor(){
+        this.trainingArray = [];
+        this.selectedTraining = null;
+    }
+    start(){
+        let selection = this.showTrainingMenuOptions();
+        //want this menu to populate all training options and allow multiple check marks or yes/no
+    }
 }
