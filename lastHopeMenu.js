@@ -25,6 +25,7 @@ class Menu {
         let selection = this.showMainMenuOptions(); 
 
         while(selection != 0) {  
+     //       if (selection == 0){
             switch (selection) {
                 case '1':
                     this.createOperations(); 
@@ -38,15 +39,20 @@ class Menu {
                 case '4':
                     this.displayOperations(); 
                     break;
+                case '5':
+                    this.viewAllMembers();
                 default:
                     selection = 0; 
             }
             selection = this.showMainMenuOptions(); 
+    //   }else{
+    //       window.alert('Invalid Response!' + showMainMenuOptions);
         }
 
         alert ('Goodbye!'); 
     }
-    
+
+
     showMainMenuOptions () { 
         return prompt(`
             0) Exit
@@ -54,17 +60,18 @@ class Menu {
             2) View an Operation
             3) Delete an Operation 
             4) Display all Operations
+            5) View all members
         `);
     }
 
-    showOperationsMenuOptions(shiftInfo) { 
+    showOperationsMenuOptions() { 
         
         return prompt(`
             0) Back
-            1) Add an Member
-            2) Remove an Member
-            --------------------
-            ${shiftInfo} 
+            1) Add a Member
+            2) Remove a Member
+            3) View Members
+        
         `);
     }
 
@@ -93,7 +100,7 @@ class Menu {
             let description = 'Operation Name: ' + this.selectedOperations.name + '\n'; 
 
             for (let i = 0; i < this.selectedOperations.members.length; i++) {  
-                description += i + ') ' + this.selectedOperation.members[i].name + ' - ' + this.selectedOperation.members[i].role + '\n';
+                description += i + ') ' + this.selectedOperations.members[i].name + ' - ' + this.selectedOperations.members[i].role + '\n';
             }
             let selection = this.showOperationsMenuOptions (description); 
             switch (selection) { 
@@ -101,12 +108,20 @@ class Menu {
                     this.addMember(); 
                     break;
                 case '2':
-                    this.removeMember(); 
+                    this.removeMember();
+                    break;
+                case '3':
+                    this.viewMembers();
+                     
             }
         }
     }
     deleteOperations() { 
-        let index = prompt ('Enter the the index of the role that you wish to remove:'); 
+        let string = "";
+        for(let i = 0; i < this.operations.length; i++){
+            string += i + ') ' + this.operations[i].name + '\n';//wanted the to display the actual index and available selections to choose from
+        }
+        let index = prompt ('Enter the the index of the Operation that you wish to remove:\n' + string); 
         if (index > -1 && index < this.operations.length) { 
             this.operations.splice(index, 1); 
         }
@@ -120,12 +135,34 @@ class Menu {
     }
 
     removeMember () { 
-        let index = prompt('Enter the index number of the Member that you wish to remove from shift:'); 
-        if (index > -1 && index < this.selectedOperations.Members.length) { 
-            this.selectedOperations.Members.splice(index, 1); 
+        let string3 = "";
+        for(let i = 0; i < this.selectedOperations.members.length; i++){//would not run with this.member.length
+            string3 += i + ') ' + this.selectedOperations.members[i].name + '\n';//wanted the to display the actual index and available selections to choose from
+        }
+        let index = prompt('Enter the index number of the Member that you wish to remove from shift:\n' + string3); 
+        if (index > -1 && index < this.selectedOperations.members.length) { 
+            this.selectedOperations.members.splice(index, 1); 
         } 
     }
-
+    viewMembers(){
+        let string3 = "";
+        for(let i = 0; i < this.selectedOperations.members.length; i++){//would not run with this.member.length
+            string3 += i + ') ' + this.selectedOperations.members[i].name + '\n';//wanted the to display the actual index and available selections to choose from
+        }
+        window.alert(string3);
+        
+    }
+    viewAllMembers(){//trying to make a menu option to display all members names and their role.  seems like that's not stored. I think I need to build an array to house all the
+                                //stored names and roles to do it
+        
+        let string3 = [];
+        let string4 = [];
+        for(let i = 0; i < this.selectedOperations.members.length; i++){//would not run with this.member.length
+            string3 += i + ') ' + this.selectedOperations.members[i].name + '\n';//wanted the to display the actual index and available selections to choose from
+        }
+        window.alert(string3);    
+}
+    
 }
 
 let menu = new Menu(); 
