@@ -61,7 +61,52 @@ class Deck {
 // create the deck (52 cards)
 // shuffle 52 cards
 // deal - interact with
+class Game{
+    constructor(){
+        this.player1 = [];
+        this.player2 = [];
+    }
+    start(){
+        let shuffledDeck = [];
+        
+        //random array sorting and push code into array
+        shuffledDeck.push(//random sort code here)
+        )
+    }
+}
 
+    for(let i = 0; i < shuffledDeck.length; i++){
+        if(shuffledDeck[i + 1] % 2 == 0){
+            this.player1.push(shuffledDeck[i]);
+        }
+        else{
+            this.player2.push(shuffledDeck[i]);
+        }
+    }
+    if(player1(player1[i]) > (player2(player2{i}))){
+        let winningHand = [];
+        winningHand.push("P1");
+    }
+    else{
+        winningHand.push("P2");
+    }  
+    let compareWins1 = 0;
+    let compareWins2 = 0; 
+    for(let i = 0; i < winningHand.length; i++){
+        if(winningHand(winningHand[i]) === "P1"){
+            compareWins1 += winningHand[i]
+        }
+        else{
+            compareWins2 += winningHand[i]
+        }
+        if(compareWins1 > compareWins2){
+            window.alert("Player 1 Wins!!!");
+        }
+        else{
+            window.alert("Player 2 Wins!!!");
+        }
+    }
+    }
 
 
 let gameDeck = new Deck();
@@ -77,3 +122,4 @@ if(card1.rank > card2.rank) {
 
     //do something
 }
+start
