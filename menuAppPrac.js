@@ -16,7 +16,7 @@ class DiveOperations{//these members will also appear in Members above, these ha
         this.trainedIn = [];
     }
     describe(){
-        return `${this.name} is a ${this.status} member of WTDRR, joined on ${this.dateJoined}
+        return `${this.name} is a ${this.status} member of WTDRR, joined on ${this.dateJoined}// not 
         is currently certified as ${this.certificationLevel} with ${this.certifyingAgency} and can be reached at ${this.phoneNumber}`;
     }
 }
@@ -37,7 +37,7 @@ class Surface_Support{//will also show up in Members
 //let trainingArray = [];//would like these to appear as a list in each members profile. would like the
                       //menu for this to be able to accept more than one entry             
 class Training{
-    constructor(aboveWater, belowWater){
+    constructor(aboveWater, belowWater){//not sure if i can separate training into categories with the constructor
         this.sonar = [];
         this.tender = [];
         this.comms = [];
@@ -105,7 +105,7 @@ console.log(trainingArray);
 //console.log(this.areaTrainedIn);
 
 
-class Menu{                        //
+class Main_Menu{                        //
     constructor(){
         this.members = [];
         this.selectedMember = null;
@@ -145,16 +145,35 @@ showMainMenuOptions(){
     4) Update Member Info
     `);
 }
-
-}
-class Training_Menu{//training menu. multiple selection menu 'click all that apply' or 1,2,3,4 with the last 
-    // option to submit and exit
+class Training_Menu{                        //
     constructor(){
-        this.trainingArray = [];
-        this.selectedTraining = null;
+        this.members = [];
+        this.selectedMember = null;
+
     }
     start(){
-        let selection = this.showTrainingMenuOptions();
-        //want this menu to populate all training options and allow multiple check marks or yes/no
+        let selection = this.showMainMenuOptions();
+        while(selection != 0){
+            switch(selection){
+                case '1':
+                    this.addTrainingFieldToMembers();//after a training exercise, we can click on the training and add names of multiple members, which passes the training into their profile
+                    break;
+                case '2':
+                    this.viewAllTrainingFields();//lists all the training team has recorded in SOG's at this time
+                    break;
+                case '3':
+                    this.addTrainingEvent();//add training excersises and dates. future usage will push to calendars or notifications on mobile apps, auto or bot populate on messenger
+                    break;
+                case '4':
+                    this.listMembersBytraining();//outputs a list of all members that have trained in a particular field
+                    break;
+                case '5':
+                    this.updateTrainingFields();//Add field, change names
+                default:
+                    selection = 0;
+        }
+        selection = this.showMainMenuOptions();
     }
+    alert('goodbye');
+}
 }
